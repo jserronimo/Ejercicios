@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Reloj Digital</title>
+    <link href="estilos.css" rel="stylesheet"/>
+</head>
+<body onload="mostrarFecha(), mostrarHora()">
+    <div class="contenedor">
+        <div id="hora">
+            HORA
+        </div>
+        <div id="fecha">
+
+        </div>
+    </div>
+    <script>
+
+    function mostrarFecha(){
+        let fecha = new Date();
+        const meses = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+        const dias = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+        let dia = dias[fecha.getDay()];
+        let diasN = fecha.getDay();
+        let mes = meses[fecha.getMonth()];
+        let fechaCompleta = `${dia}, ${diasN} ${mes}`;
+        
+        document.getElementById("fecha").innerHTML = fechaCompleta;
+    }
+    function mostrarHora(){
+        let hora = new Date();
+        let hr = formatoHora(hora.getHours());
+        let min = formatoHora(hora.getMinutes());
+        let sec = formatoHora(hora.getSeconds());
+        document.getElementById("hora").innerHTML = `${hr}:${min}:${sec}`;
+    }
+    const formatoHora = (hor)=>{
+        if(hor < 10)
+            hor = "0" + hor;
+            return hor;
+    }
+    setInterval(mostrarHora, 1000);
+    </script>
+</body>
+</html>
